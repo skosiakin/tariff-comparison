@@ -16,7 +16,8 @@ namespace TariffComparison.Service
             var cost = product.BaseYearlyCost;
             foreach(var price in product.Prices.OrderBy(x => x.ConsumptionFromKwh))
             {
-                // we sorted 
+                // we sorted prices by start/end range
+                // so if consumption already smaller then low level of current range, we could stop calculation
                 if(consumptionKwh < price.ConsumptionFromKwh)
                 {
                     break;
